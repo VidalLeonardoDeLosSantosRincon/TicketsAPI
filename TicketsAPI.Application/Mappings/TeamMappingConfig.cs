@@ -8,6 +8,7 @@ public class TeamMappingConfig: IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<Team, TeamDto>();
+        config.NewConfig<Team, TeamDto>()
+            .Map(dest => dest.MemberCount, src => src.Members.Count);
     }
 }

@@ -15,15 +15,19 @@ namespace TicketsAPI.Infrastructure.Persistence.Repositories
 
         public async Task<IEnumerable<Team>> GetAll()
         {
-            return await _context.Teams.ToListAsync();
+            return await _context.Teams
+                .Include(x => x.Members)
+                .ToListAsync();
         }
 
         public async  Task<Team?> GetByCode(string code)
         {
-            return await _context.Teams.FirstOrDefaultAsync(x => 
-                !string.IsNullOrEmpty(x.Code) 
-                && x.Code.Equals(code, StringComparison.OrdinalIgnoreCase)
-            );
+            return await _context.Teams
+                .Include(x => x.Members)
+                .FirstOrDefaultAsync(x => 
+                    !string.IsNullOrEmpty(x.Code) 
+                    && x.Code.Equals(code, StringComparison.OrdinalIgnoreCase)
+                );
         }
     }
 }
