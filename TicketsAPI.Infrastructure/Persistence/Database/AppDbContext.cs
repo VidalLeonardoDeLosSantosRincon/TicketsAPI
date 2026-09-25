@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TicketsAPI.Domain.Models.Teams;
+using TicketsAPI.Domain.Models.Users;
 
 namespace TicketsAPI.Infrastructure.Persistence.Database
 {
@@ -10,6 +11,8 @@ namespace TicketsAPI.Infrastructure.Persistence.Database
         {
         }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<User> Roles { get; set; }
         public DbSet<Team> Teams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,7 +21,10 @@ namespace TicketsAPI.Infrastructure.Persistence.Database
 
             //Entities configuration
             modelBuilder.HasDefaultSchema("helpdesk");
-            modelBuilder.Entity<Team>().ToTable("Team");
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Role>().ToTable("Roles");
+            modelBuilder.Entity<Team>().ToTable("Teams");
+            modelBuilder.Entity<TeamMember>().ToTable("TeamMembers");
         }
     }
 }

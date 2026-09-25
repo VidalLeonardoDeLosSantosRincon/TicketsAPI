@@ -2,7 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using TicketsAPI.Application.Interfaces.Services;
+using TicketsAPI.Application.Interfaces.Services.Auth;
 using TicketsAPI.Application.Services;
+using TicketsAPI.Application.Services.Auth;
 
 namespace TicketsAPI.Application;
 
@@ -15,8 +17,10 @@ public static class DependencyInjection
         TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
         services.AddMapster();
 
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<ITeamService, TeamService>();
-
+       
         return services;
     }
 }

@@ -17,8 +17,9 @@ public static class DependencyInjection
         options.UseSqlServer(
         configuration.GetConnectionString("TicketsDB")));
 
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ITeamRepository, TeamRepository>();
-
+        
         return services;
     }
 }
