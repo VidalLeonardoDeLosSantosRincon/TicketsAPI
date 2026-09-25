@@ -40,15 +40,17 @@ public class JwtService: IJwtService
     {
         var user = await CheckUser(login);
 
-        var userId = user.Guid.ToString();
-        var userName = user.Email ?? string.Empty;
-        var role = user.Role?.Name ?? string.Empty;
+        var userId = user.Guid;
+        var userName = user.Name ?? string.Empty;
+        var userEmail = user.Email ?? string.Empty;
+        var userRole = user.Role?.Name ?? string.Empty;
 
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, userId),
+            new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new Claim(ClaimTypes.Name, userName),
-            new Claim(ClaimTypes.Role, role),
+            new Claim(ClaimTypes.Email, userEmail),
+            new Claim(ClaimTypes.Role, userRole),
             new Claim("scope", Policies.Scopes.GrantTicketAccess),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
@@ -58,18 +60,24 @@ public class JwtService: IJwtService
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var experationDate = DateTime.UtcNow.AddHours(1);
 
         var token = new JwtSecurityToken(
             issuer: _configuration["Authentication:JWT:Issuer"],
             audience: _configuration["Authentication:JWT:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddHours(1),
+            expires: experationDate,
             signingCredentials: credentials
         );
 
         var accessToken = new LoginResponseDto()
         {
-            AccessToken = new JwtSecurityTokenHandler().WriteToken(token)
+            Code = userId,
+            UserName = userName,
+            Email = userEmail,
+            Role = userRole,
+            AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
+            ExperitationDate = experationDate
         };
 
         return accessToken;
