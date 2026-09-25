@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using TicketsAPI.Domain.Models.Solutions;
 using TicketsAPI.Domain.Models.Teams;
+using TicketsAPI.Domain.Models.Users;
 
 namespace TicketsAPI.Domain.Models.Tickets;
 
@@ -9,13 +10,11 @@ public class Ticket
 {
     [Key]
     public int Id { get; set; }
-    public int Number { get; set; }
+    public Guid Guid { get; set; }
     public string? Title { get; set; }
     public string? Description { get; set; }
-
-    public string? Requester { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-    public DateTime UpdatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
 
     //foreignKeys
     [ForeignKey(nameof(Status))]
@@ -27,8 +26,8 @@ public class Ticket
     [ForeignKey(nameof(Category))]
     public int CategoryId { get; set; }
 
-    [ForeignKey(nameof(TeamMember))]
-    public int TeamMemberId { get; set; }
+    [ForeignKey(nameof(User))]
+    public int UserId { get; set; }
 
     //[ForeignKey(nameof(Classification))]
     //public int ClassificationId { get; set; }
@@ -37,8 +36,9 @@ public class Ticket
     public TicketStatus? Status { get; set; }
     public TicketPriority? Priority { get; set; }
     public TicketCategory? Category { get; set; }
-    public TeamMember? TeamMember { get; set; }
-    public TicketClassification? Classification { get; set; }
+    //public TeamMember? TeamMember { get; set; }
+    public User? User { get; set; }
+    //public TicketClassification? Classification { get; set; }
 
     //entities lists
     public List<SolutionSuggestion> Suggestions { get; set; } = new();

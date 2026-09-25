@@ -20,7 +20,8 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<ITeamService, TeamService>();
-       
+        services.AddScoped<ITicketService, TicketService>();
+
         return services;
     }
 }

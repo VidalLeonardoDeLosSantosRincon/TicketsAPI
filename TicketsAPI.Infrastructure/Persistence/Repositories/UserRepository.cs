@@ -1,35 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using TicketsAPI.Domain.Interfaces.Repositories;
 using TicketsAPI.Domain.Models.Users;
 using TicketsAPI.Infrastructure.Persistence.Database;
 
-namespace TicketsAPI.Infrastructure.Persistence.Repositories
+namespace TicketsAPI.Infrastructure.Persistence.Repositories;
+
+public class UserRepository: IUserRepository
 {
-    public class UserRepository: IUserRepository
+    private readonly AppDbContext _context;
+
+    public UserRepository(AppDbContext context)
     {
-        private readonly AppDbContext _context;
+        _context = context;
+    }
 
-        public UserRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+    public async Task<User?> GetByGuid(Guid guid)
+    {
+        return await _context.Users
+            .Include(x => x.Role)
+            .FirstOrDefaultAsync(x => x.Guid == guid);
+    }
 
-        public async Task<User?> GetByGuid(Guid guid)
-        {
-            return await _context.Users
-                .Include(x => x.Role)
-                .FirstOrDefaultAsync(x => x.Guid == guid);
-        }
-
-        public async Task<User?> GetByEmail(string email)
-        {
-            return await _context.Users
-                .Include(x => x.Role)
-                .FirstOrDefaultAsync(x => 
-                    !string.IsNullOrWhiteSpace(x.Email)
-                    && x.Email.ToLower() == email.ToLower()
-                );
-        }
+    public async Task<User?> GetByEmail(string email)
+    {
+        return await _context.Users
+            .Include(x => x.Role)
+            .FirstOrDefaultAsync(x => 
+                !string.IsNullOrWhiteSpace(x.Email)
+                && x.Email.ToLower() == email.ToLower()
+            );
     }
 }

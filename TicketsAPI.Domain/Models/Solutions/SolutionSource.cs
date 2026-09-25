@@ -5,6 +5,7 @@ namespace TicketsAPI.Domain.Models.Solutions;
 public class SolutionSource
 {
     public int Id { get; set; }
+    public Guid Guid { get; set; }
     public string? Label { get; set; }
 
     //foreignKeys

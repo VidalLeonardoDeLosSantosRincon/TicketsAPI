@@ -6,6 +6,7 @@ public class TeamDto
 {
     [JsonPropertyName("id")]
     public string? Code { get; set; }
+    public Guid Guid { get; set; }
     public string? Name { get; set; }
     [JsonPropertyName("slug")]
     public string? Label { get; set; }

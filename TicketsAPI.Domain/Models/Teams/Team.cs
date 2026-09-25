@@ -6,6 +6,7 @@ public class Team
 {
     [Key]
     public int Id { get; set; }
+    public Guid Guid { get; set; }
     public string? Name { get; set; }
     public string? Code { get; set; }
     public string? Label { get; set; }

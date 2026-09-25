@@ -7,6 +7,7 @@ public class TeamMember
 {
     [Key]
     public int Id { get; set; }
+    public Guid Guid { get; set; }
     public string? Name { get; set; }
     public string? Email { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;

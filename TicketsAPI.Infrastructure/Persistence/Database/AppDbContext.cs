@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TicketsAPI.Domain.Models.Teams;
+using TicketsAPI.Domain.Models.Tickets;
 using TicketsAPI.Domain.Models.Users;
 
 namespace TicketsAPI.Infrastructure.Persistence.Database
@@ -14,6 +15,7 @@ namespace TicketsAPI.Infrastructure.Persistence.Database
         public DbSet<User> Users { get; set; }
         public DbSet<User> Roles { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,8 @@ namespace TicketsAPI.Infrastructure.Persistence.Database
             modelBuilder.Entity<Role>().ToTable("Roles");
             modelBuilder.Entity<Team>().ToTable("Teams");
             modelBuilder.Entity<TeamMember>().ToTable("TeamMembers");
+            modelBuilder.Entity<Ticket>().ToTable("Ticket");
+            //modelBuilder.Entity<TicketAssignment>().ToTable("TicketAssignment");
         }
     }
 }
