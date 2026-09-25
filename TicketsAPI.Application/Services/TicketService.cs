@@ -1,6 +1,8 @@
 ﻿using Mapster;
 using TicketsAPI.Application.DTOs.Tickets;
 using TicketsAPI.Application.Interfaces.Services;
+using TicketsAPI.Domain.Constants;
+using TicketsAPI.Domain.Enums;
 using TicketsAPI.Domain.Interfaces.Repositories;
 
 namespace TicketsAPI.Application.Services;
@@ -19,6 +21,34 @@ public class TicketService: ITicketService
         var tickets = await _ticketRepository.GetAll();
 
         return tickets.Adapt<IEnumerable<TicketDto>>();
+    }
+
+    public async Task<TicketSummaryDto> GetAllSummary()
+    {
+        var tickets = await _ticketRepository.GetAll();
+        var ticketsDtos = tickets.Adapt<IEnumerable<TicketDto>>();
+
+        return new TicketSummaryDto()
+        {
+            OpenTicketsCount = ticketsDtos.Count(x =>
+                !string.IsNullOrWhiteSpace(x.Status) 
+                && !x.Status.Equals(Tickets.Status.Closed)
+                && !x.Status.Equals(Tickets.Status.Resolved)
+            ),
+            CriticalTicketsCount = ticketsDtos.Count(x =>
+                    !string.IsNullOrWhiteSpace(x.Priority)
+                    && x.Priority.Equals(nameof(TicketPriorityEnum.P1), StringComparison.OrdinalIgnoreCase)
+            ),
+            InProgressTicketsCount = ticketsDtos.Count(x =>
+                    !string.IsNullOrWhiteSpace(x.Status)
+                    && x.Status.Equals(Tickets.Status.InProgress, StringComparison.OrdinalIgnoreCase)
+            ),
+            ResolvedTicketsCount = ticketsDtos.Count(x =>
+                    !string.IsNullOrWhiteSpace(x.Status)
+                    && x.Status.Equals(Tickets.Status.Resolved, StringComparison.OrdinalIgnoreCase)
+            ),
+            Tickets = ticketsDtos
+        };
     }
 
     public async Task<TicketDto?> GetByGuid(Guid guid)

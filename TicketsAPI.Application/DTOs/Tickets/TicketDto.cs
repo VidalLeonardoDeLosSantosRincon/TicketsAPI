@@ -20,8 +20,11 @@ public class TicketDto
     public string? Description { get; set; }
 
     public string? Status { get; set; }
+    public string? StatusLabel { get; set; }
     public string? Priority { get; set; }
+    public string? PriorityLabel { get; set; }
     public string? Category { get; set; }
+    public string? CategoryLabel { get; set; }
 
     [JsonPropertyName("teamId")]
     public string? TeamCode { get; set; }
