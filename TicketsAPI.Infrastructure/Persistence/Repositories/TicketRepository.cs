@@ -21,6 +21,7 @@ public class TicketRepository: ITicketRepository
                 .Include(x => x.Priority)
                 .Include(x => x.Category)
                 .Include(x => x.User)
+                .OrderByDescending(x => x.Id)
                 .ToListAsync();
     }
 
