@@ -22,9 +22,9 @@ public class TeamService: ITeamService
         return teams.Adapt<IEnumerable<TeamDto>>();
     }
 
-    public async Task<TeamDto?> GetByCode(string code)
+    public async Task<TeamDto?> GetByGuid(Guid guid)
     {
-        var team = await _teamRepostiroy.GetByCode(code);
+        var team = await _teamRepostiroy.GetByGuid(guid);
         return team.Adapt<TeamDto>();
     }
 }

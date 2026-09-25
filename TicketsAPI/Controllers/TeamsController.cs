@@ -6,27 +6,27 @@ using TicketsAPI.Domain.Constants;
 namespace TicketsAPI.Controllers;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
-[Route("api/[controller]")]
+[Route("api/teams")]
 [ApiController]
-public class TeamController : ControllerBase
+public class TeamsController : ControllerBase
 {
     private readonly ITeamService _teamService;
 
-    public TeamController(ITeamService teamService) {
+    public TeamsController(ITeamService teamService) {
         _teamService = teamService;
     }
 
-    [HttpGet("all")]
+    [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var teams = await _teamService.GetAll();
         return Ok(teams);
     }
 
-    [HttpGet("{code}")]
-    public async Task<IActionResult> GetByCode(string code)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetByGuid(Guid id)
     {
-        var team = await _teamService.GetByCode(code);
+        var team = await _teamService.GetByGuid(id);
         return team is not null ? Ok(team) : NotFound();
     }
 }

@@ -5,7 +5,7 @@ using TicketsAPI.Application.Interfaces.Services.Auth;
 
 namespace TicketsAPI.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/auth")]
 [ApiController]
 [AllowAnonymous]
 public class AuthController : ControllerBase

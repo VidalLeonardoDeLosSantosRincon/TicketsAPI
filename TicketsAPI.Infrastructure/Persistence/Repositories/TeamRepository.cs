@@ -20,13 +20,10 @@ public class TeamRepository: ITeamRepository
             .ToListAsync();
     }
 
-    public async  Task<Team?> GetByCode(string code)
+    public async  Task<Team?> GetByGuid(Guid guid)
     {
         return await _context.Teams
             .Include(x => x.Members)
-            .FirstOrDefaultAsync(x => 
-                !string.IsNullOrEmpty(x.Code) 
-                && x.Code.Equals(code, StringComparison.OrdinalIgnoreCase)
-            );
+            .FirstOrDefaultAsync(x =>  x.Guid == guid);
     }
 }

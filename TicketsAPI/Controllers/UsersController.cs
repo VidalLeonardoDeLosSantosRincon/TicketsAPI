@@ -5,9 +5,9 @@ using TicketsAPI.Domain.Constants;
 namespace TicketsAPI.Controllers;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
-[Route("api/[controller]")]
+[Route("api/users")]
 [ApiController]
-public class UserController : ControllerBase
+public class UsersController : ControllerBase
 {
 
 }

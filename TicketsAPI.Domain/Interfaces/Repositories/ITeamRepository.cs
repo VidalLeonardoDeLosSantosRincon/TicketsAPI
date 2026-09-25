@@ -5,5 +5,5 @@ namespace TicketsAPI.Domain.Interfaces.Repositories;
 public interface ITeamRepository
 {
     Task<IEnumerable<Team>> GetAll();
-    Task<Team?> GetByCode(string code);
+    Task<Team?> GetByGuid(Guid guid);
 }
