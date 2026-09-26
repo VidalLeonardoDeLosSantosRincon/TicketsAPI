@@ -11,9 +11,9 @@ public class TicketCategoryService : ITicketCategoryService
         _ticketCategoryRepository = ticketCategoryRepository;
     }
 
-    public async Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync()
+    public async Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync(CancellationToken cancellationToken)
     {
-        var options = await _ticketCategoryRepository.GetAllForDropdownAsync();
+        var options = await _ticketCategoryRepository.GetAllForDropdownAsync(cancellationToken);
         return options.Adapt<IEnumerable<OptionObjectDto>>();
     }
 }

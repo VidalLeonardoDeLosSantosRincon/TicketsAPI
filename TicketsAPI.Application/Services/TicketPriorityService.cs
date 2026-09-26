@@ -11,9 +11,9 @@ public class TicketPriorityService : ITicketPriorityService
         _ticketPriorityRepository = ticketPriorityRepository;
     }
 
-    public async Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync()
+    public async Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync(CancellationToken cancellationToken)
     {
-        var options = await _ticketPriorityRepository.GetAllForDropdownAsync();
+        var options = await _ticketPriorityRepository.GetAllForDropdownAsync(cancellationToken);
         return options.Adapt<IEnumerable<OptionObjectDto>>();
     }
 }

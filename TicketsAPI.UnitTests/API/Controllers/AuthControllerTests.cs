@@ -39,13 +39,12 @@ public class AuthControllerTests
             Role = "Solicitante",
             AccessToken = "fake-jwt-token"
         };
-
         _jwtServiceMock
-            .Setup(s => s.GenerateTokenAsync(loginDto))
+            .Setup(s => s.GenerateTokenAsync(loginDto, CancellationToken.None))
             .ReturnsAsync(loginResponseDto);
 
         // Act
-        var result = await _controller.Token(loginDto);
+        var result = await _controller.Token(loginDto, CancellationToken.None);
 
         // Assert
         Assert.Multiple(() =>
@@ -70,11 +69,11 @@ public class AuthControllerTests
         var exceptionMessage = "Credenciales inválidas";
 
         _jwtServiceMock
-            .Setup(s => s.GenerateTokenAsync(loginDto))
+            .Setup(s => s.GenerateTokenAsync(loginDto, CancellationToken.None))
             .ThrowsAsync(new UnauthorizedAccessException(exceptionMessage));
 
         // Act
-        var result = await _controller.Token(loginDto);
+        var result = await _controller.Token(loginDto, CancellationToken.None);
 
         // Assert
         Assert.Multiple(() =>
@@ -94,11 +93,11 @@ public class AuthControllerTests
         var exceptionMessage = "Datos incompletos";
 
         _jwtServiceMock
-            .Setup(s => s.GenerateTokenAsync(loginDto))
+            .Setup(s => s.GenerateTokenAsync(loginDto, CancellationToken.None))
             .ThrowsAsync(new InvalidDataException(exceptionMessage));
 
         // Act
-        var result = await _controller.Token(loginDto);
+        var result = await _controller.Token(loginDto, CancellationToken.None);
 
         // Assert
         Assert.Multiple(() =>
@@ -117,11 +116,11 @@ public class AuthControllerTests
         var loginDto = new LoginDto { Email = "user", Password = "123" };
 
         _jwtServiceMock
-            .Setup(s => s.GenerateTokenAsync(loginDto))
+            .Setup(s => s.GenerateTokenAsync(loginDto, CancellationToken.None))
             .ThrowsAsync(new Exception("Error de base de datos"));
 
         // Act
-        var result = await _controller.Token(loginDto);
+        var result = await _controller.Token(loginDto, CancellationToken.None);
 
         // Assert
         Assert.Multiple(() =>

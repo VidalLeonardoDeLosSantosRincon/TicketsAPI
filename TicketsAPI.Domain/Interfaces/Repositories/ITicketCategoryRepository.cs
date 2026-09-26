@@ -4,5 +4,5 @@ namespace TicketsAPI.Domain.Interfaces.Repositories;
 
 public interface ITicketCategoryRepository
 {
-    Task<IEnumerable<OptionObject>> GetAllForDropdownAsync();
+    Task<IEnumerable<OptionObject>> GetAllForDropdownAsync(CancellationToken cancellationToken);
 }

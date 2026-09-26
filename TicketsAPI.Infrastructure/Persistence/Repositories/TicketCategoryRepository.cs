@@ -11,14 +11,14 @@ public class TicketCategoryRepository : ITicketCategoryRepository
         _appDbContext = appDbContext;
     }
 
-    public async Task<IEnumerable<OptionObject>> GetAllForDropdownAsync()
+    public async Task<IEnumerable<OptionObject>> GetAllForDropdownAsync(CancellationToken cancellationToken)
     {
         var ticketStatuses = await _appDbContext.TicketCategories.Select(x => new OptionObject()
         {
             Guid = x.Guid,
             Code = x.Code,
             Name = x.Name
-        }).ToListAsync();
+        }).ToListAsync(cancellationToken);
 
         return ticketStatuses;
     }

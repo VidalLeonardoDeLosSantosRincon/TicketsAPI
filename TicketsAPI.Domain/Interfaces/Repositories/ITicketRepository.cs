@@ -5,7 +5,7 @@ namespace TicketsAPI.Domain.Interfaces.Repositories
 {
     public interface ITicketRepository
     {
-        Task<IEnumerable<Ticket>> GetAllAsync(TicketSearchFilter? filter = null);
-        Task<Ticket?> GetByGuidAsync(Guid guid);
+        Task<IEnumerable<Ticket>> GetAllAsync(TicketSearchFilter? filter = null, CancellationToken cancellationToken = default);
+        Task<Ticket?> GetByGuidAsync(Guid guid, CancellationToken cancellationToken);
     }
 }

@@ -4,5 +4,5 @@ namespace TicketsAPI.Application.Interfaces.Services;
 
 public interface ITicketPriorityService
 {
-    Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync();
+    Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync(CancellationToken cancellationToken);
 }

@@ -10,17 +10,17 @@ public class TeamRepository: ITeamRepository
       _context= context;
     }
 
-    public async Task<IEnumerable<Team>> GetAllAsync()
+    public async Task<IEnumerable<Team>> GetAllAsync(CancellationToken cancellationToken)
     {
         return await _context.Teams
             .Include(x => x.Members)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public async  Task<Team?> GetByGuidAsync(Guid guid)
+    public async  Task<Team?> GetByGuidAsync(Guid guid, CancellationToken cancellationToken)
     {
         return await _context.Teams
             .Include(x => x.Members)
-            .FirstOrDefaultAsync(x =>  x.Guid == guid);
+            .FirstOrDefaultAsync(x =>  x.Guid == guid, cancellationToken);
     }
 }

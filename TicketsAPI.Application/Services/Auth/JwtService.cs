@@ -19,12 +19,12 @@ public class JwtService: IJwtService
         _userService = userService;
     }
 
-    private async Task<UserDto> CheckUser(LoginDto login)
+    private async Task<UserDto> CheckUser(LoginDto login, CancellationToken cancellationToken)
     {
         var email = login.Email ?? string.Empty;
         var credenticialsMessage = "usuario o contraseña invalido";
 
-        var user = await _userService.GetByEmailAsync(email) ?? throw new UnauthorizedAccessException(credenticialsMessage);
+        var user = await _userService.GetByEmailAsync(email, cancellationToken) ?? throw new UnauthorizedAccessException(credenticialsMessage);
       
         if (user?.Role is null || !BCrypt.Net.BCrypt.Verify(login.Password, user.Password))
         {
@@ -34,9 +34,9 @@ public class JwtService: IJwtService
         return user;
     }
 
-    public async Task<LoginResponseDto> GenerateTokenAsync(LoginDto login)
+    public async Task<LoginResponseDto> GenerateTokenAsync(LoginDto login, CancellationToken cancellationToken)
     {
-        var user = await CheckUser(login);
+        var user = await CheckUser(login, cancellationToken);
 
         var userId = user.Guid;
         var userName = user.Name ?? string.Empty;

@@ -12,5 +12,5 @@ public interface IAuthController
     /// <para>Retorna un <see cref="Task{IActionResult}"/> de tipo <see cref="LoginResponseDto"/> con la información de la sessión,</para>
     /// <para>o de tipo <see langword="null"/> si falló</para>
     /// </returns>
-    Task<IActionResult> Token(LoginDto login);
+    Task<IActionResult> Token(LoginDto login, CancellationToken cancellationToken);
 }

@@ -2,6 +2,6 @@
 
 public interface ITeamsController
 {
-    Task<IActionResult> GetAll();
-    Task<IActionResult> GetByGuid(Guid id);
+    Task<IActionResult> GetAll(CancellationToken cancellationToken);
+    Task<IActionResult> GetByGuid(Guid id, CancellationToken cancellationToken);
 }

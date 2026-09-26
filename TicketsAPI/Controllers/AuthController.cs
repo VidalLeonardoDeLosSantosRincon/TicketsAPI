@@ -17,11 +17,11 @@ public class AuthController : ControllerBase, IAuthController
     }
 
     [HttpPost("token")]
-    public async Task<IActionResult> Token([FromBody] LoginDto login)
+    public async Task<IActionResult> Token([FromBody] LoginDto login, CancellationToken cancellationToken)
     {
         try
         {
-            var accessToken = await _jwtService.GenerateTokenAsync(login);
+            var accessToken = await _jwtService.GenerateTokenAsync(login, cancellationToken);
             return Ok(accessToken);
         } catch (UnauthorizedAccessException ex)
         {

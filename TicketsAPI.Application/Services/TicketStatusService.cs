@@ -10,9 +10,9 @@ public class TicketStatusService: ITicketStatusService
         _ticketStatusRepository = ticketStatusRepository;
     }
 
-    public async Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync()
+    public async Task<IEnumerable<OptionObjectDto>> GetAllForDropdownAsync(CancellationToken cancellationToken)
     {
-        var options = await _ticketStatusRepository.GetAllForDropdownAsync();
+        var options = await _ticketStatusRepository.GetAllForDropdownAsync(cancellationToken);
         return options.Adapt<IEnumerable<OptionObjectDto>>();
     }
 }

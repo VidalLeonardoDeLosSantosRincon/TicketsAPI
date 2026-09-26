@@ -17,18 +17,18 @@ public class TicketsController : ControllerBase, ITicketsController
     // GET: api/tickets
     // GET: api/tickets?summary=true
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] TicketSearchFilter? filter)
+    public async Task<IActionResult> GetAll([FromQuery] TicketSearchFilter? filter, CancellationToken cancellationToken)
     {
-        if (filter?.Summary ?? false) return Ok(await _ticketService.GetAllSummaryAsync());
+        if (filter?.Summary ?? false) return Ok(await _ticketService.GetAllSummaryAsync(cancellationToken));
 
-        return Ok(await _ticketService.GetAllAsync(filter));
+        return Ok(await _ticketService.GetAllAsync(filter, cancellationToken));
     }
 
     // GET: api/tickets/f47ac10b-58cc-4372-a567-0e02b2c3d479
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetByGuid(Guid id)
+    public async Task<IActionResult> GetByGuid(Guid id, CancellationToken cancellationToken)
     {
-        var ticket = await _ticketService.GetByGuidAsync(id);
+        var ticket = await _ticketService.GetByGuidAsync(id, cancellationToken);
 
         if (ticket is null)
             return NotFound(new { Message = $"El ticket con Id {id} no existe." });

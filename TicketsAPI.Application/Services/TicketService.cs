@@ -13,16 +13,16 @@ public class TicketService: ITicketService
         _ticketRepository = ticketRepository;
     }
 
-    public async Task<IEnumerable<TicketDto>> GetAllAsync(TicketSearchFilter? filter = null)
+    public async Task<IEnumerable<TicketDto>> GetAllAsync(TicketSearchFilter? filter = null, CancellationToken cancellationToken = default)
     {
-        var tickets = await _ticketRepository.GetAllAsync(filter);
+        var tickets = await _ticketRepository.GetAllAsync(filter, cancellationToken);
 
         return tickets.Adapt<IEnumerable<TicketDto>>();
     }
 
-    public async Task<TicketSummaryDto> GetAllSummaryAsync()
+    public async Task<TicketSummaryDto> GetAllSummaryAsync(CancellationToken cancellationToken)
     {
-        var tickets = await _ticketRepository.GetAllAsync();
+        var tickets = await _ticketRepository.GetAllAsync(null, cancellationToken);
         var ticketsDtos = tickets.Adapt<IEnumerable<TicketDto>>();
 
         return new TicketSummaryDto()
@@ -48,9 +48,9 @@ public class TicketService: ITicketService
         };
     }
 
-    public async Task<TicketDto?> GetByGuidAsync(Guid guid)
+    public async Task<TicketDto?> GetByGuidAsync(Guid guid, CancellationToken cancellationToken)
     {
-        var ticket = await _ticketRepository.GetByGuidAsync(guid);
+        var ticket = await _ticketRepository.GetByGuidAsync(guid, cancellationToken);
 
         if (ticket is null) return null;
 

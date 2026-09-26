@@ -12,7 +12,7 @@ public class TicketRepository: ITicketRepository
         _appDbContext = appDbContext;
     }
 
-    public async Task<IEnumerable<Ticket>> GetAllAsync(TicketSearchFilter? filter = null)
+    public async Task<IEnumerable<Ticket>> GetAllAsync(TicketSearchFilter? filter = null, CancellationToken cancellationToken = default)
     {
         var query = _appDbContext.Tickets
                 .Include(x => x.Status)
@@ -26,16 +26,16 @@ public class TicketRepository: ITicketRepository
 
         return await query
                 .OrderByDescending(x => x.Id)
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
     }
 
-    public async Task<Ticket?> GetByGuidAsync(Guid guid)
+    public async Task<Ticket?> GetByGuidAsync(Guid guid, CancellationToken cancellationToken)
     {
         return await _appDbContext.Tickets
                 .Include(x => x.Status)
                 .Include(x => x.Priority)
                 .Include(x => x.Category)
                 .Include(x => x.User)
-                .FirstOrDefaultAsync(x => x.Guid == guid);
+                .FirstOrDefaultAsync(x => x.Guid == guid, cancellationToken);
     }
 }

@@ -12,16 +12,16 @@ public class TeamsController : ControllerBase, ITeamsController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
     {
-        var teams = await _teamService.GetAllAsync();
+        var teams = await _teamService.GetAllAsync(cancellationToken);
         return Ok(teams);
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetByGuid(Guid id)
+    public async Task<IActionResult> GetByGuid(Guid id, CancellationToken cancellationToken)
     {
-        var team = await _teamService.GetByGuidAsync(id);
+        var team = await _teamService.GetByGuidAsync(id, cancellationToken);
         return team is not null ? Ok(team) : NotFound();
     }
 }
