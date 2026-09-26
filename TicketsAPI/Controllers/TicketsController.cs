@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using TicketsAPI.Application.Interfaces.Services;
-using TicketsAPI.Domain.Constants;
-using TicketsAPI.Domain.Filters;
-using TicketsAPI.Interfaces.Controllers;
+﻿using TicketsAPI.Domain.Filters;
 
 namespace TicketsAPI.Controllers;
 

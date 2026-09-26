@@ -1,7 +1,4 @@
-﻿using Mapster;
-using TicketsAPI.Application.DTOs.Teams;
-using TicketsAPI.Application.Interfaces.Services;
-using TicketsAPI.Domain.Interfaces.Repositories;
+﻿using TicketsAPI.Application.DTOs.Teams;
 
 namespace TicketsAPI.Application.Services;
 

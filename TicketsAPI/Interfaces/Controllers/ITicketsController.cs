@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TicketsAPI.Domain.Filters;
+﻿using TicketsAPI.Domain.Filters;
 
 namespace TicketsAPI.Interfaces.Controllers;
 

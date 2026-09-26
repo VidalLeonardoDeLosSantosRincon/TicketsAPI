@@ -1,7 +1,5 @@
-﻿using Mapster;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Application.Interfaces.Services.Auth;
 using TicketsAPI.Application.Services;
 using TicketsAPI.Application.Services.Auth;

@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TicketsAPI.Domain.Interfaces.Repositories;
-using TicketsAPI.Infrastructure.Persistence.Database;
 using TicketsAPI.Infrastructure.Persistence.Repositories;
 
 namespace TicketsAPI.Infrastructure;

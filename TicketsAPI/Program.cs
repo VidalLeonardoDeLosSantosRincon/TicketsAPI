@@ -3,7 +3,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using TicketsAPI.Application;
-using TicketsAPI.Domain.Constants;
 using TicketsAPI.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);

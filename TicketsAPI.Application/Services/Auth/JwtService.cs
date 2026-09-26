@@ -5,9 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using TicketsAPI.Application.DTOs.Access;
 using TicketsAPI.Application.DTOs.Users;
-using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Application.Interfaces.Services.Auth;
-using TicketsAPI.Domain.Constants;
 
 namespace TicketsAPI.Application.Services.Auth;
 

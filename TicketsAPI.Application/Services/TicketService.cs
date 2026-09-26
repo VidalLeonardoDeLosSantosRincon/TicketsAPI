@@ -1,10 +1,6 @@
-﻿using Mapster;
-using TicketsAPI.Application.DTOs.Tickets;
-using TicketsAPI.Application.Interfaces.Services;
-using TicketsAPI.Domain.Constants;
+﻿using TicketsAPI.Application.DTOs.Tickets;
 using TicketsAPI.Domain.Enums;
 using TicketsAPI.Domain.Filters;
-using TicketsAPI.Domain.Interfaces.Repositories;
 
 namespace TicketsAPI.Application.Services;
 

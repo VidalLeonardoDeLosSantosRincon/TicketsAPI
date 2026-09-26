@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace TicketsAPI.Interfaces.Controllers;
+﻿namespace TicketsAPI.Interfaces.Controllers;
 
 public interface ITeamsController
 {

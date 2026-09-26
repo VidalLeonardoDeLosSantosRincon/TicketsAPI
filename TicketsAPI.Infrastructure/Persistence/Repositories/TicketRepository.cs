@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TicketsAPI.Domain.Filters;
-using TicketsAPI.Domain.Interfaces.Repositories;
+﻿using TicketsAPI.Domain.Filters;
 using TicketsAPI.Domain.Models.Tickets;
-using TicketsAPI.Infrastructure.Persistence.Database;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace TicketsAPI.Infrastructure.Persistence.Repositories;
 

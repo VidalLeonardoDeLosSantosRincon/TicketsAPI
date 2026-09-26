@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TicketsAPI.Application.DTOs.Access;
+﻿using TicketsAPI.Application.DTOs.Access;
 
 namespace TicketsAPI.Application.Interfaces.Controllers;
 

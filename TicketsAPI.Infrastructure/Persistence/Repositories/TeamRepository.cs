@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TicketsAPI.Domain.Interfaces.Repositories;
-using TicketsAPI.Domain.Models.Teams;
-using TicketsAPI.Infrastructure.Persistence.Database;
+﻿using TicketsAPI.Domain.Models.Teams;
 
 namespace TicketsAPI.Infrastructure.Persistence.Repositories;
 
