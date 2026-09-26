@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using TicketsAPI.Domain.Filters;
 
-namespace TicketsAPI.Interfaces.Controllers;
+namespace TicketsAPI.Interfaces.Controllers.V1;
 
 public interface ITicketsController
 {

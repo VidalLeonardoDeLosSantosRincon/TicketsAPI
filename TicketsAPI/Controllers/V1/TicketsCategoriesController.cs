@@ -1,9 +1,11 @@
 ﻿using TicketsAPI.Domain.Filters;
+using TicketsAPI.Interfaces.Controllers.V1;
 
-namespace TicketsAPI.Controllers;
+namespace TicketsAPI.Controllers.V1;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
-[Route("api/tickets/categories")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/tickets/categories")]
 [ApiController]
 public class TicketsCategoriesController : ControllerBase, ITicketsCategoriesController
 {
@@ -14,7 +16,7 @@ public class TicketsCategoriesController : ControllerBase, ITicketsCategoriesCon
         _ticketCategoryService = ticketCategoryService;
     }
 
-    // GET: api/tickets/categories/dropdown
+    // GET: api/v1/tickets/categories/dropdown
     [HttpGet("dropdown")]
     public async Task<IActionResult> GetAllForDropdown(CancellationToken cancellationToken)
     {

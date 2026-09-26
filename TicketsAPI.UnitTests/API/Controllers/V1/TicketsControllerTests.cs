@@ -1,4 +1,4 @@
-﻿namespace TicketsAPI.UnitTests.API.Controllers;
+﻿namespace TicketsAPI.UnitTests.API.Controllers.V1;
 
 [TestFixture]
 public class TicketsControllerTests

@@ -1,4 +1,4 @@
-﻿namespace TicketsAPI.Interfaces.Controllers;
+﻿namespace TicketsAPI.Interfaces.Controllers.V1;
 
 public interface ITicketsStatusesController
 {

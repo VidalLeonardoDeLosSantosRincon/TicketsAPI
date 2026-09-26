@@ -7,20 +7,24 @@
     <!-- Shared -->
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
+    
     <!-- API -->
+    <PackageVersion Include="Asp.Versioning.Http" Version="7.1.0" />
+    <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.1.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.20" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+
     <!-- Application -->
     <PackageVersion Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageVersion Include="Mapster" Version="7.4.0" />
     <PackageVersion Include="Mapster.DependencyInjection" Version="1.0.1" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.7.3" />
+
     <!-- Infrastructure -->
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.5" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.20" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.20" />
-    
     <!-- Tests -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageVersion Include="Moq" Version="4.21.0" />

@@ -1,7 +1,10 @@
-﻿namespace TicketsAPI.Controllers;
+﻿using TicketsAPI.Interfaces.Controllers.V1;
+
+namespace TicketsAPI.Controllers.V1;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
-[Route("api/tickets/priorities")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/tickets/priorities")]
 [ApiController]
 public class TicketsPrioritiesController : ControllerBase, ITicketsPrioritiesController
 {
@@ -12,7 +15,7 @@ public class TicketsPrioritiesController : ControllerBase, ITicketsPrioritiesCon
         _ticketPriorityService = ticketPriorityService;
     }
 
-    // GET: api/tickets/priorities/dropdown
+    // GET: api/v1/tickets/priorities/dropdown/
     [HttpGet("dropdown")]
     public async Task<IActionResult> GetAllForDropdown(CancellationToken cancellationToken)
     {

@@ -1,10 +1,11 @@
 ﻿using TicketsAPI.Application.DTOs.Access;
-using TicketsAPI.Application.Interfaces.Controllers;
 using TicketsAPI.Application.Interfaces.Services.Auth;
+using TicketsAPI.Interfaces.Controllers.V1;
 
-namespace TicketsAPI.Controllers;
+namespace TicketsAPI.Controllers.V1;
 
-[Route("api/auth")]
+[Route("api/v{version:apiVersion}/auth")]
+[ApiVersion("1.0")]
 [ApiController]
 [AllowAnonymous]
 public class AuthController : ControllerBase, IAuthController
@@ -16,6 +17,7 @@ public class AuthController : ControllerBase, IAuthController
         _jwtService = jwtService;
     }
 
+    // POST: api/v1/auth/token
     [HttpPost("token")]
     public async Task<IActionResult> Token([FromBody] LoginDto login, CancellationToken cancellationToken)
     {
@@ -23,10 +25,12 @@ public class AuthController : ControllerBase, IAuthController
         {
             var accessToken = await _jwtService.GenerateTokenAsync(login, cancellationToken);
             return Ok(accessToken);
-        } catch (UnauthorizedAccessException ex)
+        }
+        catch (UnauthorizedAccessException ex)
         {
             return Unauthorized(ex.Message);
-        } catch (InvalidDataException ex)
+        }
+        catch (InvalidDataException ex)
         {
             return BadRequest(ex.Message);
         }

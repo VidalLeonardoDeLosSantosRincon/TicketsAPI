@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TicketsAPI.Application.DTOs.Access;
 using TicketsAPI.Application.Interfaces.Services.Auth;
-using TicketsAPI.Controllers;
+using TicketsAPI.Controllers.V1;
 
-namespace TicketsAPI.UnitTests.API.Controllers;
+namespace TicketsAPI.UnitTests.API.Controllers.V1;
 
 [TestFixture]
 public class AuthControllerTests
@@ -20,7 +20,7 @@ public class AuthControllerTests
     [SetUp]
     public void SetUp()
     {
-      
+
     }
 
     [Test]

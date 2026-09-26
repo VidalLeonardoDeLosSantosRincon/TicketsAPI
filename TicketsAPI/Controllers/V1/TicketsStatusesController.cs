@@ -1,7 +1,10 @@
-﻿namespace TicketsAPI.Controllers;
+﻿using TicketsAPI.Interfaces.Controllers.V1;
+
+namespace TicketsAPI.Controllers.V1;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
-[Route("api/tickets/statuses")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/tickets/statuses")]
 [ApiController]
 public class TicketsStatusesController : ControllerBase, ITicketsStatusesController
 {
@@ -12,7 +15,7 @@ public class TicketsStatusesController : ControllerBase, ITicketsStatusesControl
         _ticketStatusService = ticketStatusService;
     }
 
-    // GET: api/tickets/statuses/dropdown
+    // GET: api/v1/tickets/statuses/dropdown
     [HttpGet("dropdown")]
     public async Task<IActionResult> GetAllForDropdown(CancellationToken cancellationToken)
     {
