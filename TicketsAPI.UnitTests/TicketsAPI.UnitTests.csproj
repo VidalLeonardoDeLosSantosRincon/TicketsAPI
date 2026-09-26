@@ -14,4 +14,11 @@
     <PackageReference Include="coverlet.collector" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TicketsAPI.Application\TicketsAPI.Application.csproj" />
+    <ProjectReference Include="..\TicketsAPI.Domain\TicketsAPI.Domain.csproj" />
+    <ProjectReference Include="..\TicketsAPI.Infrastructure\TicketsAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\TicketsAPI\TicketsAPI.csproj" />
+  </ItemGroup>
+
 </Project>
