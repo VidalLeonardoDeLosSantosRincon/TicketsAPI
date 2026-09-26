@@ -19,6 +19,9 @@ public static class DependencyInjection
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<ITeamService, TeamService>();
         services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<ITicketStatusService, TicketStatusService>();
+        services.AddScoped<ITicketPriorityService, TicketPriorityService>();
+        services.AddScoped<ITicketCategoryService, TicketCategoryService>();
 
         return services;
     }

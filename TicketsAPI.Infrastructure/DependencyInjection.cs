@@ -17,6 +17,9 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ITeamRepository, TeamRepository>();
         services.AddScoped<ITicketRepository, TicketRepository>();
+        services.AddScoped<ITicketStatusRepository, TicketStatusRepository>();
+        services.AddScoped<ITicketPriorityRepository, TicketPriorityRepository>();
+        services.AddScoped<ITicketCategoryRepository, TicketCategoryRepository>();
 
         return services;
     }
