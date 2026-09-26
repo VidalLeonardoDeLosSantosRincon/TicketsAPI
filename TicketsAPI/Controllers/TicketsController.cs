@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Domain.Constants;
+using TicketsAPI.Domain.Filters;
 
 namespace TicketsAPI.Controllers;
 
@@ -20,11 +21,11 @@ public class TicketsController : ControllerBase
     // GET: api/tickets
     // GET: api/tickets?summary=true
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] bool summary = false)
+    public async Task<IActionResult> GetAll([FromQuery] TicketSearchFilter? filter)
     {
-        if (summary) return Ok(await _ticketService.GetAllSummary());
+        if (filter?.Summary ?? false) return Ok(await _ticketService.GetAllSummary());
 
-        return Ok(await _ticketService.GetAll());
+        return Ok(await _ticketService.GetAll(filter));
     }
 
     // GET: api/tickets/f47ac10b-58cc-4372-a567-0e02b2c3d479

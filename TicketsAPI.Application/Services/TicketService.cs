@@ -3,6 +3,7 @@ using TicketsAPI.Application.DTOs.Tickets;
 using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Domain.Constants;
 using TicketsAPI.Domain.Enums;
+using TicketsAPI.Domain.Filters;
 using TicketsAPI.Domain.Interfaces.Repositories;
 
 namespace TicketsAPI.Application.Services;
@@ -16,9 +17,9 @@ public class TicketService: ITicketService
         _ticketRepository = ticketRepository;
     }
 
-    public async Task<IEnumerable<TicketDto>> GetAll()
+    public async Task<IEnumerable<TicketDto>> GetAll(TicketSearchFilter? filter = null)
     {
-        var tickets = await _ticketRepository.GetAll();
+        var tickets = await _ticketRepository.GetAll(filter);
 
         return tickets.Adapt<IEnumerable<TicketDto>>();
     }
