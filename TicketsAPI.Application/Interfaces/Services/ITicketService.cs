@@ -5,7 +5,7 @@ namespace TicketsAPI.Application.Interfaces.Services;
 
 public interface ITicketService
 {
-    Task<IEnumerable<TicketDto>> GetAll(TicketSearchFilter? filter = null);
-    Task<TicketSummaryDto> GetAllSummary();
-    Task<TicketDto?> GetByGuid(Guid guid);
+    Task<IEnumerable<TicketDto>> GetAllAsync(TicketSearchFilter? filter = null);
+    Task<TicketSummaryDto> GetAllSummaryAsync();
+    Task<TicketDto?> GetByGuidAsync(Guid guid);
 }

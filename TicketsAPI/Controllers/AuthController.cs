@@ -22,7 +22,7 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var accessToken = await _jwtService.GenerateToken(login);
+            var accessToken = await _jwtService.GenerateTokenAsync(login);
             return Ok(accessToken);
         } catch (UnauthorizedAccessException ex)
         {

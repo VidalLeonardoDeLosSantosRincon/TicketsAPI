@@ -4,6 +4,6 @@ namespace TicketsAPI.Domain.Interfaces.Repositories;
 
 public interface IUserRepository
 {
-    Task<User?> GetByGuid(Guid guid);
-    Task<User?> GetByEmail(string email);
+    Task<User?> GetByGuidAsync(Guid guid);
+    Task<User?> GetByEmailAsync(string email);
 }

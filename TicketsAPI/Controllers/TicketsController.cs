@@ -23,16 +23,16 @@ public class TicketsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] TicketSearchFilter? filter)
     {
-        if (filter?.Summary ?? false) return Ok(await _ticketService.GetAllSummary());
+        if (filter?.Summary ?? false) return Ok(await _ticketService.GetAllSummaryAsync());
 
-        return Ok(await _ticketService.GetAll(filter));
+        return Ok(await _ticketService.GetAllAsync(filter));
     }
 
     // GET: api/tickets/f47ac10b-58cc-4372-a567-0e02b2c3d479
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetByGuid(Guid id)
     {
-        var ticket = await _ticketService.GetByGuid(id);
+        var ticket = await _ticketService.GetByGuidAsync(id);
 
         if (ticket is null)
             return NotFound(new { Message = $"El ticket con Id {id} no existe." });

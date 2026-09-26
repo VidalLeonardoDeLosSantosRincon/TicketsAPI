@@ -17,16 +17,16 @@ public class TicketService: ITicketService
         _ticketRepository = ticketRepository;
     }
 
-    public async Task<IEnumerable<TicketDto>> GetAll(TicketSearchFilter? filter = null)
+    public async Task<IEnumerable<TicketDto>> GetAllAsync(TicketSearchFilter? filter = null)
     {
-        var tickets = await _ticketRepository.GetAll(filter);
+        var tickets = await _ticketRepository.GetAllAsync(filter);
 
         return tickets.Adapt<IEnumerable<TicketDto>>();
     }
 
-    public async Task<TicketSummaryDto> GetAllSummary()
+    public async Task<TicketSummaryDto> GetAllSummaryAsync()
     {
-        var tickets = await _ticketRepository.GetAll();
+        var tickets = await _ticketRepository.GetAllAsync();
         var ticketsDtos = tickets.Adapt<IEnumerable<TicketDto>>();
 
         return new TicketSummaryDto()
@@ -52,9 +52,9 @@ public class TicketService: ITicketService
         };
     }
 
-    public async Task<TicketDto?> GetByGuid(Guid guid)
+    public async Task<TicketDto?> GetByGuidAsync(Guid guid)
     {
-        var ticket = await _ticketRepository.GetByGuid(guid);
+        var ticket = await _ticketRepository.GetByGuidAsync(guid);
 
         if (ticket is null) return null;
 

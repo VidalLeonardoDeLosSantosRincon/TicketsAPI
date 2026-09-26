@@ -13,14 +13,14 @@ public class TeamRepository: ITeamRepository
       _context= context;
     }
 
-    public async Task<IEnumerable<Team>> GetAll()
+    public async Task<IEnumerable<Team>> GetAllAsync()
     {
         return await _context.Teams
             .Include(x => x.Members)
             .ToListAsync();
     }
 
-    public async  Task<Team?> GetByGuid(Guid guid)
+    public async  Task<Team?> GetByGuidAsync(Guid guid)
     {
         return await _context.Teams
             .Include(x => x.Members)

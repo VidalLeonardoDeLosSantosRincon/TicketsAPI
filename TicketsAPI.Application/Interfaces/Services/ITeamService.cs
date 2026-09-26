@@ -4,6 +4,6 @@ namespace TicketsAPI.Application.Interfaces.Services;
 
 public interface ITeamService
 {
-    Task<IEnumerable<TeamDto>> GetAll();
-    Task<TeamDto?> GetByGuid(Guid guid);
+    Task<IEnumerable<TeamDto>> GetAllAsync();
+    Task<TeamDto?> GetByGuidAsync(Guid guid);
 }

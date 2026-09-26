@@ -16,7 +16,7 @@ public class TicketRepository: ITicketRepository
         _appDbContext = appDbContext;
     }
 
-    public async Task<IEnumerable<Ticket>> GetAll(TicketSearchFilter? filter = null)
+    public async Task<IEnumerable<Ticket>> GetAllAsync(TicketSearchFilter? filter = null)
     {
         var query = _appDbContext.Tickets
                 .Include(x => x.Status)
@@ -33,7 +33,7 @@ public class TicketRepository: ITicketRepository
                 .ToListAsync();
     }
 
-    public async Task<Ticket?> GetByGuid(Guid guid)
+    public async Task<Ticket?> GetByGuidAsync(Guid guid)
     {
         return await _appDbContext.Tickets
                 .Include(x => x.Status)

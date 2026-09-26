@@ -4,6 +4,6 @@ namespace TicketsAPI.Application.Interfaces.Services;
 
 public interface IUserService
 {
-    Task<UserDto?> GetByGuid(Guid guid);
-    Task<UserDto?> GetByEmail(string email);
+    Task<UserDto?> GetByGuidAsync(Guid guid);
+    Task<UserDto?> GetByEmailAsync(string email);
 }

@@ -4,6 +4,6 @@ namespace TicketsAPI.Domain.Interfaces.Repositories;
 
 public interface ITeamRepository
 {
-    Task<IEnumerable<Team>> GetAll();
-    Task<Team?> GetByGuid(Guid guid);
+    Task<IEnumerable<Team>> GetAllAsync();
+    Task<Team?> GetByGuidAsync(Guid guid);
 }

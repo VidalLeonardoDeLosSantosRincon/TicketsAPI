@@ -2,7 +2,6 @@
 using TicketsAPI.Application.DTOs.Teams;
 using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Domain.Interfaces.Repositories;
-using TicketsAPI.Domain.Models.Tickets;
 
 namespace TicketsAPI.Application.Services;
 
@@ -15,16 +14,16 @@ public class TeamService: ITeamService
         _teamRepostiroy = teamRepostiroy;
     }
 
-    public async Task<IEnumerable<TeamDto>> GetAll()
+    public async Task<IEnumerable<TeamDto>> GetAllAsync()
     {
-        var teams = await _teamRepostiroy.GetAll();
+        var teams = await _teamRepostiroy.GetAllAsync();
 
         return teams.Adapt<IEnumerable<TeamDto>>();
     }
 
-    public async Task<TeamDto?> GetByGuid(Guid guid)
+    public async Task<TeamDto?> GetByGuidAsync(Guid guid)
     {
-        var team = await _teamRepostiroy.GetByGuid(guid);
+        var team = await _teamRepostiroy.GetByGuidAsync(guid);
         return team.Adapt<TeamDto>();
     }
 }

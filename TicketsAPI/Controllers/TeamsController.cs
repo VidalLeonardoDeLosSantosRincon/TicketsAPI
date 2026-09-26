@@ -19,14 +19,14 @@ public class TeamsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var teams = await _teamService.GetAll();
+        var teams = await _teamService.GetAllAsync();
         return Ok(teams);
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetByGuid(Guid id)
     {
-        var team = await _teamService.GetByGuid(id);
+        var team = await _teamService.GetByGuidAsync(id);
         return team is not null ? Ok(team) : NotFound();
     }
 }
