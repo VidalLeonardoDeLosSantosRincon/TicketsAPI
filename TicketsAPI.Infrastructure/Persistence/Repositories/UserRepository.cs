@@ -14,14 +14,14 @@ public class UserRepository: IUserRepository
         _context = context;
     }
 
-    public async Task<User?> GetByGuid(Guid guid)
+    public async Task<User?> GetByGuidAsync(Guid guid)
     {
         return await _context.Users
             .Include(x => x.Role)
             .FirstOrDefaultAsync(x => x.Guid == guid);
     }
 
-    public async Task<User?> GetByEmail(string email)
+    public async Task<User?> GetByEmailAsync(string email)
     {
         return await _context.Users
             .Include(x => x.Role)

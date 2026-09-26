@@ -14,17 +14,17 @@ public class UserService: IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<UserDto?> GetByGuid(Guid guid)
+    public async Task<UserDto?> GetByGuidAsync(Guid guid)
     {
-        var user = await _userRepository.GetByGuid(guid);
+        var user = await _userRepository.GetByGuidAsync(guid);
         if (user is null) return null;
 
         return user.Adapt<UserDto>();
     }
 
-    public async Task<UserDto?> GetByEmail(string email)
+    public async Task<UserDto?> GetByEmailAsync(string email)
     {
-        var user = await _userRepository.GetByEmail(email);
+        var user = await _userRepository.GetByEmailAsync(email);
         if (user is null) return null;
 
         return user.Adapt<UserDto>();
