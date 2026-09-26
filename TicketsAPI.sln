@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketsAPI", "TicketsAPI\TicketsAPI.csproj", "{628B0B24-388E-4B6B-BD36-554A427AFAB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsAPI", "TicketsAPI\TicketsAPI.csproj", "{628B0B24-388E-4B6B-BD36-554A427AFAB7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsAPI.Domain", "TicketsAPI.Domain\TicketsAPI.Domain.csproj", "{9464D790-8BB1-4524-B751-563B42E1A2C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsAPI.Infrastructure", "TicketsAPI.Infrastructure\TicketsAPI.Infrastructure.csproj", "{9AC4417F-24BB-431F-B7B8-9A95D6EAE0C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketsAPI.Application", "TicketsAPI.Application\TicketsAPI.Application.csproj", "{25B096A8-363E-4F42-978F-7BF31A204824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketsAPI.Tests", "TicketsAPI.Tests\TicketsAPI.Tests.csproj", "{972C87CE-B714-4ACB-BD2E-827EC5B8A44A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{25B096A8-363E-4F42-978F-7BF31A204824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25B096A8-363E-4F42-978F-7BF31A204824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25B096A8-363E-4F42-978F-7BF31A204824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972C87CE-B714-4ACB-BD2E-827EC5B8A44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972C87CE-B714-4ACB-BD2E-827EC5B8A44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972C87CE-B714-4ACB-BD2E-827EC5B8A44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972C87CE-B714-4ACB-BD2E-827EC5B8A44A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
