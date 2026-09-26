@@ -3,13 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Domain.Constants;
 using TicketsAPI.Domain.Filters;
+using TicketsAPI.Interfaces.Controllers;
 
 namespace TicketsAPI.Controllers;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
 [Route("api/tickets")]
 [ApiController]
-public class TicketsController : ControllerBase
+public class TicketsController : ControllerBase, ITicketsController
 {
     private readonly ITicketService _ticketService;
 

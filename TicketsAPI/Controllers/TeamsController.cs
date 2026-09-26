@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using TicketsAPI.Application.Interfaces.Services;
 using TicketsAPI.Domain.Constants;
+using TicketsAPI.Interfaces.Controllers;
 
 namespace TicketsAPI.Controllers;
 
 [Authorize(Policy = nameof(Policies.Scopes.GrantTicketAccess))]
 [Route("api/teams")]
 [ApiController]
-public class TeamsController : ControllerBase
+public class TeamsController : ControllerBase, ITeamsController
 {
     private readonly ITeamService _teamService;
 

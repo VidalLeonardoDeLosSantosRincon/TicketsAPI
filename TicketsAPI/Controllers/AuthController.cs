@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TicketsAPI.Application.DTOs.Access;
+using TicketsAPI.Application.Interfaces.Controllers;
 using TicketsAPI.Application.Interfaces.Services.Auth;
 
 namespace TicketsAPI.Controllers;
@@ -8,7 +9,7 @@ namespace TicketsAPI.Controllers;
 [Route("api/auth")]
 [ApiController]
 [AllowAnonymous]
-public class AuthController : ControllerBase
+public class AuthController : ControllerBase, IAuthController
 {
     private readonly IJwtService _jwtService;
 
